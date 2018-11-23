@@ -17,8 +17,21 @@ public class Student implements Serializable {
     private int sAge;
     //所有的级联、
     @OneToMany(cascade = {CascadeType.ALL},fetch=FetchType.EAGER)
-    @JoinColumn(name = "s_student_id", referencedColumnName = "student_id")
+    //  以下这句话可以不产生中间表，name是在score生成的列名为s_student_id，referencedColumnName对应student的列名为student_id。
+    //   @JoinColumn(name = "s_student_id", referencedColumnName = "student_id")
+    //这个是自定义中间关联表
+    @JoinTable(name = "t_student_score",
+            joinColumns = {@JoinColumn(name = "t_student_id", referencedColumnName = "student_id")},
+            inverseJoinColumns = {@JoinColumn(name = "t_score_id", referencedColumnName = "score_id")}
+    )
     private List<Score> scores;
+
+
+
+
+
+
+
 
     @Override
     public String toString() {
