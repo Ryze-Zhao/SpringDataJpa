@@ -23,7 +23,12 @@ public class Teacher implements Serializable {
 
     @JsonIgnore
     //以下一个是单方管理，控制方是Student
-    @ManyToMany(fetch=FetchType.EAGER ,targetEntity = Student.class, mappedBy = "teachers")
+//    @ManyToMany(fetch=FetchType.EAGER ,targetEntity = Student.class, mappedBy = "teachers")
+    //以下一个是双方管理
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch=FetchType.EAGER)
+    @JoinTable(name = "teachaer_student",
+            joinColumns = {@JoinColumn(name = "g_teacher_id",referencedColumnName="teacher_id")},
+            inverseJoinColumns = {@JoinColumn(name = "g_student_id",referencedColumnName="student_id")})
     private List<Student> students;
 
     public String toString1() {
