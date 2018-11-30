@@ -21,7 +21,7 @@ public class Teacher implements Serializable {
     private int tAge;
 
     @ManyToMany(targetEntity = Student.class, mappedBy = "teachers")
-    private Set<Student> students;
+    private List<Student> students;
 
     public Teacher(String tName, int tAge) {
         this.tName = tName;
@@ -62,11 +62,7 @@ public class Teacher implements Serializable {
         this.tAge = tAge;
     }
 
-    public Set<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(Set<Student> students) {
+    public void setStudents(List<Student> students) {
         this.students = students;
     }
 
@@ -74,10 +70,7 @@ public class Teacher implements Serializable {
 
     }
 
-    public Teacher(String tName, int tAge, Set<Student> students) {
-
-        this.tName = tName;
-        this.tAge = tAge;
-        this.students = students;
+    public List<Student> getStudents() {
+        return students;
     }
 }

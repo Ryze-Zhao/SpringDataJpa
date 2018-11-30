@@ -19,11 +19,11 @@ public class Student implements Serializable {
     @Column(name = "s_age")
     private int sAge;
 
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch=FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
     @JoinTable(name = "teacher_student",
             joinColumns = {@JoinColumn(name = "g_student_id")},
             inverseJoinColumns = {@JoinColumn(name = "g_teacher_id")})
-    private Set<Teacher> teachers;
+    private List<Teacher> teachers;
 
   public Student(String sName, int sAge) {
     this.sName = sName;
@@ -33,8 +33,7 @@ public class Student implements Serializable {
   public Student() {
   }
 
-  public Student(String sName, int sAge, Set<Teacher> teachers) {
-
+  public Student(String sName, int sAge, List<Teacher> teachers) {
     this.sName = sName;
     this.sAge = sAge;
     this.teachers = teachers;
@@ -74,11 +73,11 @@ public class Student implements Serializable {
     this.sAge = sAge;
   }
 
-  public Set<Teacher> getTeachers() {
+  public List<Teacher> getTeachers() {
     return teachers;
   }
 
-  public void setTeachers(Set<Teacher> teachers) {
+  public void setTeachers(List<Teacher> teachers) {
     this.teachers = teachers;
   }
 }
