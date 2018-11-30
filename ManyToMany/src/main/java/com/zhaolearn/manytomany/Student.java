@@ -1,5 +1,6 @@
 package com.zhaolearn.manytomany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -18,12 +19,40 @@ public class Student implements Serializable {
     private String sName;
     @Column(name = "s_age")
     private int sAge;
-
-    @ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
     @JoinTable(name = "teacher_student",
             joinColumns = {@JoinColumn(name = "g_student_id")},
             inverseJoinColumns = {@JoinColumn(name = "g_teacher_id")})
+    @JsonIgnore
     private List<Teacher> teachers;
+
+  public String toString1() {
+    return "Student{" +
+            "studentId=" + studentId +
+            ", sName='" + sName + '\'' +
+            ", sAge=" + sAge +
+            ", teachers=" + teachers +
+            '}';
+  }
+  @Override
+  public String toString() {
+    return "Student{" +
+            "studentId=" + studentId +
+            ", sName='" + sName + '\'' +
+            ", sAge=" + sAge +'}';
+  }
+
+
+
+
+
+
+
+
+
+
+
+
 
   public Student(String sName, int sAge) {
     this.sName = sName;
@@ -39,15 +68,8 @@ public class Student implements Serializable {
     this.teachers = teachers;
   }
 
-  @Override
-  public String toString() {
-    return "Student{" +
-            "studentId=" + studentId +
-            ", sName='" + sName + '\'' +
-            ", sAge=" + sAge +
-            ", teachers=" + teachers +
-            '}';
-  }
+
+
 
   public Long getStudentId() {
     return studentId;
@@ -73,11 +95,11 @@ public class Student implements Serializable {
     this.sAge = sAge;
   }
 
-  public List<Teacher> getTeachers() {
-    return teachers;
-  }
-
   public void setTeachers(List<Teacher> teachers) {
     this.teachers = teachers;
+  }
+
+  public List<Teacher> getTeachers() {
+    return teachers;
   }
 }

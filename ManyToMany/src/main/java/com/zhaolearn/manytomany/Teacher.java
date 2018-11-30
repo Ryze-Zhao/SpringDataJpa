@@ -1,6 +1,7 @@
 package com.zhaolearn.manytomany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -20,16 +21,11 @@ public class Teacher implements Serializable {
     @Column(name = "t_age")
     private int tAge;
 
-    @ManyToMany(targetEntity = Student.class, mappedBy = "teachers")
+    @ManyToMany(fetch=FetchType.EAGER ,targetEntity = Student.class, mappedBy = "teachers")
+    @JsonIgnore
     private List<Student> students;
 
-    public Teacher(String tName, int tAge) {
-        this.tName = tName;
-        this.tAge = tAge;
-    }
-
-    @Override
-    public String toString() {
+    public String toString1() {
         return "Teacher{" +
                 "teacherId=" + teacherId +
                 ", tName='" + tName + '\'' +
@@ -37,6 +33,27 @@ public class Teacher implements Serializable {
                 ", students=" + students +
                 '}';
     }
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "teacherId=" + teacherId +
+                ", tName='" + tName + '\'' +
+                ", tAge=" + tAge +'}';
+    }
+
+
+
+
+    public Teacher(String tName, int tAge) {
+        this.tName = tName;
+        this.tAge = tAge;
+    }
+
+
+
+
+
+
 
     public Long getTeacherId() {
         return teacherId;
@@ -62,6 +79,10 @@ public class Teacher implements Serializable {
         this.tAge = tAge;
     }
 
+    public List<Student> getStudents() {
+        return students;
+    }
+
     public void setStudents(List<Student> students) {
         this.students = students;
     }
@@ -70,7 +91,11 @@ public class Teacher implements Serializable {
 
     }
 
-    public List<Student> getStudents() {
-        return students;
+    public Teacher(String tName, int tAge, List<Student> students) {
+        this.tName = tName;
+        this.tAge = tAge;
+        this.students = students;
     }
+
+
 }
