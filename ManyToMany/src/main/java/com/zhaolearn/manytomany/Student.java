@@ -23,7 +23,6 @@ public class Student implements Serializable {
     @JoinTable(name = "teacher_student",
             joinColumns = {@JoinColumn(name = "g_student_id")},
             inverseJoinColumns = {@JoinColumn(name = "g_teacher_id")})
-    @JsonIgnore
     private Set<Teacher> teachers;
 
   public Student(String sName, int sAge) {

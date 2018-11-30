@@ -20,11 +20,7 @@ public class Teacher implements Serializable {
     @Column(name = "t_age")
     private int tAge;
 
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    @JoinTable(name = "teacher_student",
-            joinColumns = {@JoinColumn(name = "g_teacher_id")},
-            inverseJoinColumns = {@JoinColumn(name = "g_student_id")})
-    @JsonIgnore
+    @ManyToMany(targetEntity = Student.class, mappedBy = "teachers")
     private Set<Student> students;
 
     public Teacher(String tName, int tAge) {

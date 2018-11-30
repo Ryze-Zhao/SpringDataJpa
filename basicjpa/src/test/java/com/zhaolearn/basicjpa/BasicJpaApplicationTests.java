@@ -1,6 +1,9 @@
 package com.zhaolearn.basicjpa;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zhaolearn.basicjpa.domain.People;
+import com.zhaolearn.basicjpa.domain.SpecialNamelist;
 import com.zhaolearn.basicjpa.service.PeopleService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,5 +30,15 @@ public class BasicJpaApplicationTests {
         List<People> haha = peopleService.findByAge(hehe);
         haha.stream().forEach(e -> System.out.println(e));
     }
-
+    @Test
+    public void Json() {
+        SpecialNamelist obj=new SpecialNamelist();
+        ObjectMapper om = new ObjectMapper();
+        try {
+            String json = om.writeValueAsString(obj);
+          log.info(json);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -41,9 +41,10 @@ public class ManyToManyApplicationTests {
         haha.add(cc);
         hehe.add(bb);
         hehe.add(dd);
-        teacherRepository.saveAll(haha);
-       /* //随便保存一个就可以了，因为设置了级联，且双方都是维护方
-        studentRepository.saveAll(bbscc);*/
+        //Teacher的维护交给了Student，所以保存Student会导致teacher也被保存，如果保存Teacher只会保存teacher的。
+       /* teacherRepository.saveAll(haha);*/
+       //随便保存一个就可以了，因为设置了级联，且双方都是维护方
+        studentRepository.saveAll(bbscc);
 
 
     }
