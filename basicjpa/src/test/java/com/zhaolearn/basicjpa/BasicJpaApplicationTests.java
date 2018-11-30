@@ -3,7 +3,6 @@ package com.zhaolearn.basicjpa;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zhaolearn.basicjpa.domain.People;
-import com.zhaolearn.basicjpa.domain.SpecialNamelist;
 import com.zhaolearn.basicjpa.service.PeopleService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,7 +31,7 @@ public class BasicJpaApplicationTests {
     }
     @Test
     public void Json() {
-        SpecialNamelist obj=new SpecialNamelist();
+        People obj=new People();
         ObjectMapper om = new ObjectMapper();
         try {
             String json = om.writeValueAsString(obj);
