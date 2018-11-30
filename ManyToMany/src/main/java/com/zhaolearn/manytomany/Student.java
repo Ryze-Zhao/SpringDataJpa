@@ -20,12 +20,12 @@ public class Student implements Serializable {
     @Column(name = "s_age")
     private int sAge;
     @ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-    @JoinTable(name = "teacher_student",
+    //以下一个是单方管理，控制方是Student,双方可以复用
+    @JoinTable(name = "student_teacher",
             joinColumns = {@JoinColumn(name = "g_student_id")},
             inverseJoinColumns = {@JoinColumn(name = "g_teacher_id")})
     @JsonIgnore
     private List<Teacher> teachers;
-
   public String toString1() {
     return "Student{" +
             "studentId=" + studentId +

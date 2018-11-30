@@ -21,8 +21,9 @@ public class Teacher implements Serializable {
     @Column(name = "t_age")
     private int tAge;
 
-    @ManyToMany(fetch=FetchType.EAGER ,targetEntity = Student.class, mappedBy = "teachers")
     @JsonIgnore
+    //以下一个是单方管理，控制方是Student
+    @ManyToMany(fetch=FetchType.EAGER ,targetEntity = Student.class, mappedBy = "teachers")
     private List<Student> students;
 
     public String toString1() {
