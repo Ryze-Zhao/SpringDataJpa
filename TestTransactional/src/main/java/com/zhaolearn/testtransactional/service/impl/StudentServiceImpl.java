@@ -1,6 +1,7 @@
 package com.zhaolearn.testtransactional.service.impl;
 
 
+import com.zhaolearn.testtransactional.domain.Student;
 import com.zhaolearn.testtransactional.repository.StudentRepository;
 import com.zhaolearn.testtransactional.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,4 +14,8 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     private StudentRepository studentRepository;
 
+    @Override
+    public Student findById(long l) {
+        return null;
+    }
 }
