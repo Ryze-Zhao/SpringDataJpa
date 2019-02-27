@@ -17,8 +17,13 @@ SpringDataJPA父模块
 
 
 
-1.  basicjpa    SpringDataJPA基础使用
-2.  
+1.  basicjpa        SpringDataJPA基础使用
+2.  Bilateral       SpringDataJPA：OneToMany和ManyToOne双向关联
+3.  EntityManager   JPA：Persistence、EntityManagerFactory、EntityManager说明与常用API介绍
+4.  OneToMany       SpringDataJPA：OneToMany关系
+5.  ManyToOne       SpringDataJPA：ManyToOne关系
+6.  ManyToMany      SpringDataJPA：ManyToMany关系
+7.  TestTransaction 不记得用来做什么的
 
 #### 参与贡献
 1. RyzeZhao
