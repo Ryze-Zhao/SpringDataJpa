@@ -8,5 +8,14 @@
     <artifactId>SpringDateJPA</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <modules>
+        <module>basicjpa</module>
+        <module>Bilateral</module>
+        <module>EntityManager</module>
+        <module>ManyToOne</module>
+        <module>ManyToMany</module>
+        <module>OneToMany</module>
+        <module>TestTransactional</module>
+    </modules>
 
 </project>
