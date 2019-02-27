@@ -12,7 +12,5 @@ import java.util.List;
 @Repository
 @Transactional
 public interface PeopleRepository extends JpaRepository<People, Long> , JpaSpecificationExecutor<People>  {
-
-
     List<People> findByAgeIn(List<String> ages);
 }
